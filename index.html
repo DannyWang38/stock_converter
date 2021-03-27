@@ -11,25 +11,54 @@
   </head>
 
   <body>
-    <div id="buyPrice">
-      <label for="">買進</label>
-      <input type="number" placeholder="買進..." class="costom" />
-    </div>
+    <div class="container">
+      <div id="amount">
+        <!-- <label for="">數量</label> -->
+        <input type="number" value="1" placeholder="數量..." class="costom" />
+      </div>
 
-    <div id="amount">
-      <!-- <label  for="">數量</label> -->
-      <input type="number" value="1" placeholder="數量..." class="costom" />
-    </div>
+      <div id="buyFee">
+        <!-- <label for="">數量</label> -->
+        <input
+          type="number"
+          value="買成本"
+          placeholder="買成本"
+          class="costom"
+        />
+      </div>
 
-    <div id="sellPrice">
-      <label for="">賣出</label>
+      <div id="sellFee">
+        <!-- <label for="">數量</label> -->
+        <input
+          type="number"
+          value="賣成本"
+          placeholder="賣成本"
+          class="costom"
+        />
+      </div>
 
-      <input type="number" placeholder="賣出..." class="costom" />
-    </div>
-    <div id="Spread">
-      <label for="">價差</label>
+      <div id="buyPrice">
+        <div class="center">
+          <label for="">買進</label>
+        </div>
+        <input type="number" placeholder="買進..." class="costom" />
+      </div>
 
-      <input type="number" placeholder="價差..." class="costom" />
+      <div id="sellPrice">
+        <div class="center">
+          <label for="">賣出</label>
+        </div>
+        <!-- <label for="">賣出</label> -->
+
+        <input type="number" placeholder="賣出..." class="costom" />
+      </div>
+      <div id="Spread">
+        <div class="center">
+          <label for="">價差</label>
+        </div>
+
+        <input type="number" placeholder="價差..." class="costom" />
+      </div>
     </div>
     <script src="app.js"></script>
   </body>

@@ -8,11 +8,85 @@
 body {
   background: black;
   color: aliceblue;
+  position: relative;
 }
 
-div {
-  height: calc(100vh / 3);
-  /* display: flex; */
+.container {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+#amount {
+  grid-column: 4 / span 1;
+  grid-row: 3 / span 1;
+}
+
+#sellFee {
+  grid-column: 4 / span 1;
+  grid-row: 2 / span 1;
+}
+
+#buyFee {
+  grid-column: 4 / span 1;
+  grid-row: 1 / span 1;
+}
+
+#buyPrice {
+  grid-column: 1 / span 3;
+  grid-row: 1 / span 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  align-items: center;
+}
+#buyPrice > div {
+  grid-column: 1 / span 1;
+}
+#buyPrice > input {
+  grid-column: 2 / -1;
+}
+
+#sellPrice {
+  grid-column: 1 / -2;
+  grid-row: 2 / span 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  align-items: center;
+}
+
+#sellPrice > input {
+  grid-column: 2 / -1;
+}
+#sellPrice > label {
+  grid-column: 1 / span 1;
+}
+
+#Spread {
+  grid-column: 1 / span 3;
+  grid-row: 3 / span 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  align-items: center;
+}
+#Spread > input {
+  grid-column: 2 / -1;
+}
+#Spread > label {
+  grid-column: 1 / span 1;
+}
+#amount,
+#buyFee,
+#sellFee {
+  color: black;
+  position: relative;
+  /* background: red; */
+  display: flex;
+  align-items: flex-start;
 }
 
 input[type="number"] {
@@ -36,8 +110,18 @@ input[type="number"] {
 
 #sellPrice,
 #Spread,
-#buyPrice {
+#buyPrice,
+#amount,
+#buyFee,
+#sellFee {
   position: relative;
+  height: calc(100vh / 3);
+}
+
+#amount,
+#buyFee,
+#sellFee {
+  padding: 15px;
 }
 
 ::placeholder {
@@ -61,15 +145,15 @@ input[type="number"] {
 }
 
 label {
-  position: absolute;
-  font-size: 7rem;
-  line-height: calc(100vh / 3);
-  left: 22px;
-  /* border: white 1px solid; */
-  height: calc((100vh / 3) - 25px);
-  top: 11px;
+  text-align: center;
+  position: relative;
+  font-size: 5rem;
+  /* left: 22px; */
+  /* height: calc((100vh / 3) - 25px); */
+  /* top: 11px; */
   border-radius: 25%;
   user-select: none;
+  padding: 8%;
 }
 
 .bg {
@@ -80,33 +164,103 @@ label {
   color: yellow;
 }
 
-#amount {
-  color: aqua;
-  position: absolute;
-  right: 20px;
-  width: 20%;
-  top: calc(100vh / 48);
+.center {
   display: flex;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
 }
 
-#amount input {
+#amount input,
+#buyFee input,
+#sellFee input {
+  position: relative;
   width: 100%;
-  height: 90%;
-  background: red;
+  height: 100%;
+  background: rgb(107, 214, 196);
   color: white;
   font-size: 5em;
   text-align: center;
   border: 0;
   font-family: "Asap", sans-serif;
   outline: none;
-  border-radius: 25%;
+  border-radius: 45%;
 }
 
 #amount label {
-  position: absolute;
-
+  /* position: absolute; */
+  display: none;
   font-size: 2rem;
   /* line-height: calc(100vh / 3); */
   /* left: 22px; */
+}
+
+@media (max-width: 600px) {
+  .container {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+
+  #buyFee {
+    grid-column: 1 / span 2;
+    grid-row: 1 / 2;
+
+    width: 100%;
+
+    /* background: yellow; */
+  }
+
+  #sellFee {
+    grid-column: 3 / span 2;
+    grid-row: 1 / 2;
+
+    width: 100%;
+
+    /* background: red; */
+  }
+
+  #amount {
+    grid-column: 5 / span 2;
+    grid-row: 1 / 2;
+    width: 100%;
+    /* height: 165px; */
+
+    /* background: green; */
+  }
+
+  #amount input,
+  #buyFee input,
+  #sellFee input {
+    /* background: red; */
+    color: white;
+    font-size: 3em;
+
+    border-radius: 25%;
+  }
+
+  #buyPrice {
+    border-top: 4px solid white;
+
+    grid-column: 1 / -1;
+    grid-row: 2 / span 1;
+  }
+  #sellPrice {
+    grid-column: 1 / -1;
+    grid-row: 3 / span 1;
+  }
+  #Spread {
+    grid-column: 1 / -1;
+    grid-row: 4 / span 1;
+  }
+
+  input[type="number"] {
+    width: 100%;
+    height: 100%;
+
+    font-size: 5em;
+  }
+
+  label {
+    /* padding: 2px; */
+    font-size: 3rem;
+  }
 }

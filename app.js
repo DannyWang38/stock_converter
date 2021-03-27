@@ -3,9 +3,12 @@ const sellPriceInput = document.querySelector("#sellPrice>input");
 const spreadInput = document.querySelector("#Spread>input");
 const amountInput = document.querySelector("#amount>input");
 
-const buyPriceLabel = document.querySelector("#buyPrice>label");
-const sellPriceLabel = document.querySelector("#sellPrice>label");
-const spreadLabel = document.querySelector("#Spread>label");
+const buyPriceLabel = document.querySelector("#buyPrice label");
+const sellPriceLabel = document.querySelector("#sellPrice label");
+const spreadLabel = document.querySelector("#Spread label");
+
+const buyFeeInput = document.querySelector("#buyFee>input");
+const sellFeeInput = document.querySelector("#sellFee>input");
 
 buyPriceLabel.classList.add("bg");
 sellPriceLabel.classList.add("bg");
@@ -93,6 +96,8 @@ function buyAndSellToSpread(buy, sell, amount) {
 
   const finalBuy = totalBuy + buyFee;
   const finalSell = totalSell + sellFee + sellTax;
+  buyFeeInput.value = roundNum(finalBuy);
+  sellFeeInput.value = roundNum(finalSell);
 
   if (finalBuy && finalSell) {
     const spread = totalSell - totalBuy - buyFee - sellTax - sellFee;
@@ -112,6 +117,7 @@ function buyAndSpreadToSell(buy, spread, amount) {
   buyFee = buyFee < 1 ? 1 : Math.round(buyFee);
 
   const finalBuy = totalBuy + buyFee;
+  buyFeeInput.value = roundNum(finalBuy);
 
   if (finalBuy) {
     // spread + totalBuy + buyFee = totalSell - sellTax - sellFee;
@@ -126,9 +132,11 @@ function buyAndSpreadToSell(buy, spread, amount) {
     sellFee = sellFee < 1 ? 1 : Math.round(sellFee);
     sellTax = sellTax < 1 ? 1 : Math.round(sellTax);
     sell = (spread + totalBuy + buyFee + sellTax + sellFee) / amount;
-    // const finalSell = totalSell + sellFee + sellTax;
-    // const totalSell = sell * amount;
 
+    const totalSell = sell * amount;
+    const finalSell = totalSell + sellFee + sellTax;
+
+    sellFeeInput.value = roundNum(finalSell);
     sellPriceInput.value = roundNum(sell);
   }
 }
