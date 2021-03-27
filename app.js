@@ -20,7 +20,7 @@ buyPriceLabel.addEventListener("mousedown", () => {
     {
       spreadLabel.classList.toggle("bg");
       spreadInput.classList.toggle("output");
-      buyPriceLabel.classList.toggle("output");
+      buyPriceInput.classList.toggle("output");
     }
   }
 });
